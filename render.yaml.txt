@@ -1,0 +1,19 @@
+
+services:
+  - type: web
+    name: telegram-bot
+    env: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python main.py"
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: ADMIN_ID
+        sync: false
+      - key: PYTHON_VERSION
+        value: "3.11.0"
+    disk:
+      name: bot-data
+      mountPath: /opt/render/project/src
+      sizeGB: 1
